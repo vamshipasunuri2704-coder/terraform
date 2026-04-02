@@ -146,7 +146,6 @@ resource "aws_security_group" "eks_sg" {
 # EKS Cluster
 resource "aws_eks_cluster" "eks" {
   name     = var.cluster_name
-  version  = "1.30"
   role_arn = aws_iam_role.eks_role.arn
 
   vpc_config {
