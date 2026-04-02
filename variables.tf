@@ -33,3 +33,27 @@ variable "cluster_name" {
   type        = string
   default     = "my-eks-cluster"
 }
+
+variable "node_instance_type" {
+  description = "Instance type for EKS nodes"
+  type        = string
+  default     = "t3.medium"
+}
+
+variable "node_desired_capacity" {
+  description = "Desired number of nodes"
+  type        = number
+  default     = 2
+}
+
+variable "node_min_size" {
+  description = "Minimum number of nodes"
+  type        = number
+  default     = 1
+}
+
+variable "node_max_size" {
+  description = "Maximum number of nodes"
+  type        = number
+  default     = 3
+}

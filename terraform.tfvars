@@ -9,3 +9,11 @@ private_subnet_cidrs = ["10.0.3.0/24", "10.0.4.0/24"]
 availability_zones = ["us-east-1a", "us-east-1b"]
 
 cluster_name = "my-eks-cluster"
+
+node_instance_type = "t3.medium"
+
+node_desired_capacity = 2
+
+node_min_size = 1
+
+node_max_size = 3
