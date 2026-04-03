@@ -41,19 +41,19 @@ variable "node_instance_type" {
 }
 
 variable "node_desired_capacity" {
-  description = "Desired number of nodes"
+  description = "Desired number of worker nodes"
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "node_min_size" {
-  description = "Minimum number of nodes"
+  description = "Minimum number of worker nodes"
   type        = number
   default     = 1
 }
 
 variable "node_max_size" {
-  description = "Maximum number of nodes"
+  description = "Maximum number of worker nodes"
   type        = number
-  default     = 3
+  default     = 1
 }

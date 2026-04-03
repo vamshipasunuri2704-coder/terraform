@@ -229,3 +229,35 @@ resource "aws_eks_node_group" "eks_nodes" {
     Name = "eks-node-group"
   }
 }
+
+# Additional “master-like” EKS Node Group (1 node)
+resource "aws_eks_node_group" "eks_master_node_group" {
+  cluster_name    = aws_eks_cluster.eks.name
+  node_group_name = "eks-master-node-group"
+  node_role_arn   = aws_iam_role.eks_node_role.arn
+  subnet_ids      = [aws_subnet.private_1.id, aws_subnet.private_2.id]
+
+  scaling_config {
+    desired_size = 1
+    min_size     = 1
+    max_size     = 1
+  }
+
+  instance_types = [var.node_instance_type]
+
+  labels = {
+    "kubernetes.io/role" = "master"
+  }
+
+  taint {
+    key    = "node-role.kubernetes.io/master"
+    value  = "true"
+    effect = "NO_SCHEDULE"
+  }
+
+  tags = {
+    Name = "eks-master-node-group"
+  }
+
+  depends_on = [aws_eks_cluster.eks]
+}
